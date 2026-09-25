@@ -168,4 +168,4 @@ All prompts, attack patterns, and benchmark data hosted in CAGEBREAK are non-exe
 
 ## License
 
-MIT (c) Nasrif30
+MIT (c) Alnasrif Haliddin
