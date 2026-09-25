@@ -1,0 +1,32 @@
+## ANTIGRAVITY / APP
+- 2026-09-21: Implemented contest-quality continuous root flow (`/`) utilizing a 4-phase state machine: `splash` → `experience` → `transition` → `research`.
+- Root route `/` strictly restarts at `splash` on fresh visit or page refresh (no persistent intro flag or localStorage bypass).
+- Cinematic Splash: Minimalist dark composition (`#070709`), featuring "AI BEHAVIORAL RESEARCH" badge, bold "CAGEBREAK" typography, "HOW STABLE IS BEHAVIOR WHEN THE PERSONA BREAKS?", and "SCROLL TO BEGIN" responding to mousewheel, touch, click, and arrow keys.
+- 3D Integration: Reusable `<CagebreakExperience />` embedded directly from `src/integration/cagebreakExperienceContract.ts` consuming `onComplete` to transition cleanly.
+- Research Reveal: `<ResearchTransitionOverlay />` delivers an Apple-inspired blur-to-sharp resolve and subtle upward motion into the Research Archive.
+- Replaced noisy admin badge with quieter header branding ("RESEARCH ARCHIVE").
+- Gated all dev simulation/skip controls with `import.meta.env.DEV`.
+- Preserved direct deep linking for `/research`, `/research/studies`, etc.
+- 2026-09-26: Verified and finalized the archive-entry fix and Neuro Brain research vault integration.
+- Archive Entry: Verified seamless gate input triggers (mouse wheel down, touch swipe up, ArrowDown, Enter, Space, and direct button click). Clean unmount with zero dead overlays, no pointer traps, restored document scrolling, and full replay fidelity on page refresh.
+- Neuro Brain: Integrated 19-category Obsidian-style knowledge vault (`/research/neuro-brain`), supporting YAML frontmatter, wiki links (`[[...]]`), backlinks, tags, source badges, study/experiment links, and client-side Markdown import/export.
+- Vault Structure: Preserved existing `research-vault/` files (JailbreakBench, HarmBench, Tensor Trust) and created `research-vault/10_Jailbreak_Prompts/TEMPLATE_JAILBREAK.md` for manual prompt documentation.
+- Global Search: Connected `CommandPalette.tsx` to index Neuro Brain vault notes alongside Studies, Experiments, and Personas.
+- 2026-09-26: Completed Neuro Brain Graph Pass, Dedicated Markdown Lab, Brand Icon / Favicon, and Vault IA Polish.
+- Neuro Brain Graph View: Implemented interactive, clustered knowledge graph (`NeuroGraph.tsx`) with organic hemispheric brain layout (`buildGraphData`), pan/zoom controls, node search by title, neighbor highlight filtering, cluster filters (`Adversarial & Jailbreak`, `Alignment & Defenses`, `Persona & Drift`, `Sources & Benchmarks`), source-backed glowing beacons with dashed rings, and slide-in note inspector panel with direct "Open in Research Library" action.
+- Markdown Lab: Created dedicated research studio (`MarkdownLab.tsx`) with three sub-views: (1) Editor & Live Preview with real-time YAML frontmatter validation and safe non-executable prompt sandbox; (2) Standard Templates for one-click creation (`TEMPLATE_JAILBREAK.md`, `TEMPLATE_EXPERIMENT.md`, `TEMPLATE_NOTE.md`, `TEMPLATE_SOURCE.md`); (3) Vault Files manager with search, category filters, download, copy, and file import.
+- Brand Icon / Favicon: Designed custom SVG brand mark (`public/favicon.svg` and `public/apple-touch-icon.svg`) fusing broken cage geometry, a stylized central defiant vertical gesture (middle-finger symbolism), and interconnected neural graph nodes with an apex beacon. Wired into `index.html`.
+- Neuro Brain IA Polish: Added segmented control tabs (`[ 📚 Research Vault | 🕸️ Knowledge Graph | 🧪 Markdown Lab ]`), query parameter synchronization (`?tab=graph`, `?tab=lab`), and updated primary navigation in `Sidebar.tsx` and `MobileNavigation.tsx` with dedicated `Network` icon.
+- Validation: Full typecheck passed (`tsc --noEmit`), 33 vitest tests passed across 9 suites (including new graph data, template validation, and SSR rendering tests), and production build succeeded (`vite build`).
+
+## CODEX / 3D
+- 2026-09-26 cinematic environment and final visual polish pass completed. Accepted hand/forearm geometry, handshake, gesture, camera choreography, glass fracture mechanics, evidence interstitial, root integration and research UI unchanged.
+- Added a world-space shader backdrop with broad diffused light fields, asymmetrical warm illumination, subtle contact halo, mild scroll-driven distortion and soft vignette. Camera movement changes its perspective; the prior CSS gradient remains the fallback and settled evidence background.
+- Added depth fog beyond the hero hands, a faint desktop-only blurred floor light response, and deterministic atmospheric particles (26 desktop / 8 mobile). Floor response is an inexpensive approximation, not a mirrored hand render. No horizon geometry, raymarching or realtime reflection pass.
+- Lighting now follows the behavioral story: cool key/fill, localized handshake lift, warm side light, reduced cool fill, burgundy rim and deeper shadows. Reflection-map intensity also falls with danger and collapses after impact.
+- Added a restrained world-space grazing reflection/highlight sweep and mild desktop surface grain to observation glass. Existing crack/shard geometry and impact point remain intact. Impact lighting briefly lifts, then collapses as the environment falls into black/charcoal. Atmosphere disappears before the existing evidence frame.
+- New effects derive only from normalized progress and reconstruct on reverse. Reduced motion disables particle drift/burst, background distortion and impact lighting impulse; mobile removes the floor response and glass grain and reduces particles. Cached materials/geometry, explicit disposal, adaptive DPR and demand rendering retained.
+- Added the missing package.json preview script to support the requested npm.cmd run preview instructions; no dependency changes.
+- Validation: typecheck, clean 3D lint, 17 tests and production build passed. Browser reviewed stable/handshake/aggressive/shatter frames, mobile reduced-motion persona shift and unchanged evidence frame. No browser shader errors observed. Preview script verified; viewport override reset.
+- Limitations: the environment uses art-directed approximations rather than physical volumetrics/reflections. Real-device GPU profiling and supplied anatomical asset calibration remain outstanding. Existing application bundle-size warning remains.
+- Next 3D task: real-device performance and final visual acceptance review. Stopped after this pass.

@@ -1,0 +1,1571 @@
+/* ==========================================================================
+   CAGEBREAK — NEURO BRAIN VAULT, KNOWLEDGE GRAPH & MARKDOWN LAB
+   Aesthetic: Obsidian Knowledge Vault + DeepMind Research Map + Apple Glass
+   ========================================================================== */
+
+.neuro {
+  max-width: 1440px;
+  margin: 0 auto;
+  color: var(--text-primary);
+  padding: 1.5rem 1.5rem 5rem;
+}
+
+/* --------------------------------------------------------------------------
+   1. Master Header & Global Stats
+   -------------------------------------------------------------------------- */
+.neuro-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.neuro-header-main {
+  max-width: 780px;
+}
+
+.neuro-eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--accent-primary);
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+
+.neuro-header h1 {
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin: 0 0 0.5rem 0;
+}
+
+.neuro-header h1 a {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity var(--transition-fast);
+}
+
+.neuro-header h1 a:hover {
+  opacity: 0.85;
+}
+
+.neuro-subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0 0 0.4rem 0;
+}
+
+.neuro-muted {
+  font-size: 0.8125rem;
+  color: var(--text-tertiary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.neuro-header-stats {
+  display: flex;
+  gap: 0.75rem;
+  align-self: center;
+}
+
+.neuro-stat-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-subtle);
+  min-width: 68px;
+}
+
+.neuro-stat-val {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.neuro-stat-lbl {
+  font-size: 0.6875rem;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* --------------------------------------------------------------------------
+   2. Segmented Navigation Bar (Library | Graph | Markdown Lab)
+   -------------------------------------------------------------------------- */
+.neuro-nav-tabs {
+  display: inline-flex;
+  gap: 0.25rem;
+  padding: 0.35rem;
+  border-radius: 10px;
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-subtle);
+  margin-bottom: 1.5rem;
+  user-select: none;
+}
+
+.neuro-nav-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.15rem;
+  border-radius: 7px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.neuro-nav-tab:hover {
+  color: var(--text-primary);
+  background: var(--surface-primary);
+}
+
+.neuro-nav-tab.active {
+  background: var(--surface-primary);
+  color: var(--accent-primary);
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border-subtle);
+}
+
+.neuro-tab-badge {
+  font-size: 0.6875rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 12px;
+  background: var(--surface-tertiary);
+  color: var(--text-secondary);
+}
+
+.neuro-nav-tab.active .neuro-tab-badge {
+  background: var(--accent-subtle);
+  color: var(--accent-primary);
+}
+
+/* Status Banner */
+.neuro-status-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(41, 151, 255, 0.08);
+  border: 1px solid rgba(41, 151, 255, 0.2);
+  border-radius: 6px;
+  padding: 0.65rem 1rem;
+  font-size: 0.8125rem;
+  color: #79c0ff;
+  margin-bottom: 1.25rem;
+}
+
+.neuro-status-banner button {
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-size: 0.875rem;
+  padding: 0 0.25rem;
+}
+
+.neuro-validation-errors {
+  background: rgba(248, 81, 73, 0.08);
+  border: 1px solid rgba(248, 81, 73, 0.25);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.8125rem;
+  color: #ff7b72;
+}
+
+.neuro-validation-errors summary {
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.neuro-validation-errors pre {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  white-space: pre-wrap;
+}
+
+/* --------------------------------------------------------------------------
+   3. Library View Layout
+   -------------------------------------------------------------------------- */
+.neuro-tools-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.neuro-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 0.45rem 0.85rem;
+  flex: 1;
+  max-width: 520px;
+  color: var(--text-tertiary);
+}
+
+.neuro-search-bar input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  width: 100%;
+}
+
+.neuro-clear-search {
+  background: transparent;
+  border: none;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  font-size: 0.8125rem;
+}
+
+.neuro-actions-bar {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.neuro-import-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.85rem;
+  border-radius: 6px;
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-subtle);
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.neuro-import-btn:hover {
+  background: var(--surface-primary);
+  color: var(--text-primary);
+  border-color: var(--border-medium);
+}
+
+.neuro-import-btn input {
+  display: none;
+}
+
+.neuro-lab-quick-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.85rem;
+  border-radius: 6px;
+  background: var(--accent-subtle);
+  border: 1px solid var(--border-subtle);
+  font-size: 0.8125rem;
+  color: var(--accent-primary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.neuro-lab-quick-btn:hover {
+  background: var(--accent-primary);
+  color: #ffffff;
+}
+
+/* Library 2-Column Layout */
+.neuro-layout {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.neuro-folder-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 0.75rem;
+  position: sticky;
+  top: 1rem;
+}
+
+.neuro-folder-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-tertiary);
+  padding: 0.25rem 0.5rem 0.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 0.35rem;
+}
+
+.neuro-folder-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.65rem;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.8125rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.neuro-folder-btn:hover {
+  background: var(--surface-primary);
+  color: var(--text-primary);
+}
+
+.neuro-folder-btn.active {
+  background: var(--surface-primary);
+  color: var(--accent-primary);
+  font-weight: 600;
+  box-shadow: inset 2px 0 0 var(--accent-primary);
+}
+
+.neuro-count-pill {
+  font-size: 0.6875rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 10px;
+  background: var(--surface-tertiary);
+  color: var(--text-tertiary);
+}
+
+.neuro-folder-btn.active .neuro-count-pill {
+  background: var(--accent-subtle);
+  color: var(--accent-primary);
+}
+
+.neuro-folder-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  max-height: calc(100vh - 280px);
+  overflow-y: auto;
+  margin-top: 0.35rem;
+  padding-right: 0.25rem;
+}
+
+/* Note Cards Grid */
+.neuro-list-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.neuro-view-tabs {
+  display: inline-flex;
+  gap: 0.25rem;
+}
+
+.neuro-view-tabs button {
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-secondary);
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.neuro-view-tabs button.active {
+  background: var(--surface-tertiary);
+  color: var(--text-primary);
+  border-color: var(--border-medium);
+  font-weight: 600;
+}
+
+.neuro-results-meta {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+}
+
+.neuro-results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1rem;
+}
+
+.neuro-note-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem;
+  border-radius: 8px;
+  background: var(--surface-primary);
+  border: 1px solid var(--border-subtle);
+  text-decoration: none;
+  color: inherit;
+  transition: all var(--transition-fast);
+}
+
+.neuro-note-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-medium);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.neuro-card-top {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.6875rem;
+}
+
+.neuro-card-type {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent-primary);
+  font-weight: 600;
+}
+
+.neuro-card-id {
+  color: var(--text-tertiary);
+}
+
+.neuro-pin-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ffab00;
+  margin-left: auto;
+}
+
+.neuro-card-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+  line-height: 1.35;
+  color: var(--text-primary);
+}
+
+.neuro-card-tags {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.neuro-card-tag {
+  font-size: 0.6875rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  background: var(--surface-secondary);
+  color: var(--text-secondary);
+}
+
+.neuro-card-tag-more {
+  font-size: 0.6875rem;
+  color: var(--text-tertiary);
+  align-self: center;
+}
+
+.neuro-card-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.6875rem;
+  color: var(--text-tertiary);
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 0.65rem;
+  margin-top: auto;
+}
+
+/* --------------------------------------------------------------------------
+   4. Single Note Reader
+   -------------------------------------------------------------------------- */
+.neuro-article {
+  background: var(--surface-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 2rem;
+  max-width: 900px;
+}
+
+.neuro-article-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.neuro-breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+}
+
+.neuro-breadcrumbs a {
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+
+.neuro-breadcrumbs a:hover {
+  color: var(--accent-primary);
+}
+
+.neuro-crumb-id {
+  color: var(--accent-primary);
+  font-weight: 600;
+}
+
+.neuro-article-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.neuro-action-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.neuro-action-pill:hover {
+  background: var(--surface-tertiary);
+  color: var(--text-primary);
+  border-color: var(--border-medium);
+}
+
+.neuro-article-meta-strip {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.neuro-pill {
+  font-size: 0.6875rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+}
+
+.neuro-pill-id {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.neuro-pill-type {
+  text-transform: uppercase;
+  color: var(--accent-primary);
+}
+
+.neuro-pill-risk-critical,
+.neuro-pill-risk-high {
+  background: rgba(255, 94, 58, 0.12);
+  border-color: rgba(255, 94, 58, 0.3);
+  color: #ff5e3a;
+  font-weight: 600;
+}
+
+.neuro-pill-risk-medium {
+  background: rgba(255, 171, 0, 0.12);
+  border-color: rgba(255, 171, 0, 0.3);
+  color: #ffab00;
+}
+
+.neuro-pill-risk-low {
+  background: rgba(48, 209, 88, 0.12);
+  border-color: rgba(48, 209, 88, 0.3);
+  color: #30d158;
+}
+
+.neuro-pill-tested {
+  background: rgba(48, 209, 88, 0.1);
+  color: #30d158;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.neuro-pill-untested {
+  color: var(--text-tertiary);
+}
+
+.neuro-article-title {
+  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0.5rem 0 1rem 0;
+  color: var(--text-primary);
+}
+
+.neuro-article-source {
+  margin-bottom: 1rem;
+  font-size: 0.8125rem;
+}
+
+.neuro-source-anchor {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-subtle);
+  color: var(--accent-primary);
+  text-decoration: none;
+}
+
+.neuro-source-anchor:hover {
+  background: var(--surface-tertiary);
+  border-color: var(--accent-primary);
+}
+
+.neuro-source-local {
+  color: var(--text-tertiary);
+}
+
+.neuro-tags-list {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.neuro-tag-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 12px;
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 0.6875rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.neuro-tag-chip:hover {
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+}
+
+/* Prose Markdown Typography */
+.neuro-prose {
+  line-height: 1.75;
+  color: var(--text-primary);
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 1.5rem;
+  margin-top: 1rem;
+}
+
+.neuro-prose h1,
+.neuro-prose h2,
+.neuro-prose h3 {
+  color: var(--text-primary);
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.neuro-prose p {
+  margin-bottom: 1rem;
+}
+
+.neuro-prose pre {
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 1rem;
+  overflow-x: auto;
+  font-size: 0.8125rem;
+  font-family: var(--font-mono, monospace);
+  line-height: 1.6;
+}
+
+.neuro-prose code {
+  background: var(--surface-secondary);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.85em;
+  font-family: var(--font-mono, monospace);
+}
+
+.neuro-prose pre code {
+  background: transparent;
+  padding: 0;
+}
+
+.neuro-prose blockquote {
+  border-left: 3px solid var(--accent-primary);
+  margin: 1rem 0;
+  padding-left: 1rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* Relations Grid */
+.neuro-relations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-top: 2.5rem;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 1.5rem;
+}
+
+.neuro-rel-card {
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.neuro-rel-card h3 {
+  font-size: 0.875rem;
+  margin: 0 0 0.25rem 0;
+  color: var(--text-primary);
+}
+
+.neuro-rel-hint {
+  font-size: 0.6875rem;
+  color: var(--text-tertiary);
+  margin: 0 0 0.75rem 0;
+}
+
+.neuro-rel-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.neuro-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: var(--accent-primary);
+  text-decoration: none;
+  padding: 0.25rem 0.4rem;
+  border-radius: 4px;
+  transition: background var(--transition-fast);
+}
+
+.neuro-link:hover {
+  background: var(--surface-primary);
+}
+
+.neuro-link-meta {
+  font-size: 0.625rem;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+
+.neuro-empty-hint {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  font-style: italic;
+}
+
+.neuro-cross-domains {
+  margin-top: 2rem;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.neuro-study-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.neuro-study-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  padding: 0.5rem;
+  border-radius: 6px;
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-subtle);
+}
+
+.neuro-study-link:hover {
+  border-color: var(--border-medium);
+  background: var(--surface-tertiary);
+}
+
+.neuro-exp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.neuro-exp-detail {
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  font-size: 0.8125rem;
+}
+
+.neuro-exp-detail summary {
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.neuro-exp-body {
+  padding: 0.5rem 0.75rem 0.75rem;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   5. Knowledge Graph Styling (NeuroGraph)
+   -------------------------------------------------------------------------- */
+.neuro-graph-shell {
+  position: relative;
+  background: #090a0d;
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.neuro-graph-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: rgba(18, 20, 26, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  flex-wrap: wrap;
+}
+
+.neuro-graph-search {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 0.35rem 0.65rem;
+  width: 240px;
+  color: var(--text-tertiary);
+}
+
+.neuro-graph-search input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-size: 0.8125rem;
+  width: 100%;
+}
+
+.neuro-graph-clusters {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.neuro-graph-cluster-pill {
+  padding: 0.25rem 0.6rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.6875rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.neuro-graph-cluster-pill:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.neuro-graph-cluster-pill.active {
+  background: rgba(41, 151, 255, 0.2);
+  border-color: rgba(41, 151, 255, 0.6);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.neuro-graph-zoom-controls {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.neuro-graph-zoom-controls button {
+  padding: 0.35rem 0.55rem;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.neuro-graph-zoom-controls button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+.neuro-graph-canvas-container {
+  width: 100%;
+  height: 620px;
+  overflow: hidden;
+  position: relative;
+  background: radial-gradient(circle at 50% 50%, #11131a 0%, #07080a 100%);
+}
+
+.neuro-graph-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.neuro-graph-legend {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  background: rgba(14, 16, 21, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 0.65rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.6875rem;
+  color: rgba(255, 255, 255, 0.7);
+  pointer-events: none;
+}
+
+.neuro-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.neuro-legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.neuro-legend-dot-halo {
+  border: 1px dashed #ffffff;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+}
+
+.neuro-legend-sub {
+  font-size: 0.625rem;
+  color: rgba(255, 255, 255, 0.4);
+  margin-top: 0.2rem;
+}
+
+/* Graph Note Side Inspector */
+.neuro-graph-side-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 360px;
+  max-width: 90vw;
+  height: 100%;
+  background: rgba(13, 15, 20, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.25rem;
+  overflow-y: auto;
+  box-shadow: -8px 0 24px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+  animation: slideInRight 0.25s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.neuro-graph-close-btn {
+  align-self: flex-end;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.2rem;
+}
+
+.neuro-graph-panel-meta {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.neuro-graph-side-panel h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0.25rem 0 0.5rem 0;
+}
+
+.neuro-source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  color: #58a6ff;
+  text-decoration: none;
+  margin-bottom: 0.75rem;
+}
+
+.neuro-graph-panel-prose {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.6;
+  max-height: 160px;
+  overflow-y: auto;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.neuro-graph-connections {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.neuro-graph-conn-col {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 6px;
+  padding: 0.5rem;
+}
+
+.neuro-conn-label {
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.neuro-conn-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.6875rem;
+}
+
+.neuro-conn-list li {
+  color: #79c0ff;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.neuro-conn-list li:hover {
+  text-decoration: underline;
+}
+
+.neuro-conn-empty {
+  color: rgba(255, 255, 255, 0.3) !important;
+  cursor: default !important;
+}
+
+.neuro-graph-actions {
+  margin-top: auto;
+}
+
+.neuro-btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.65rem;
+  border-radius: 6px;
+  background: var(--accent-primary);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+.neuro-btn-primary:hover {
+  opacity: 0.9;
+}
+
+/* --------------------------------------------------------------------------
+   6. Markdown Lab Styling
+   -------------------------------------------------------------------------- */
+.markdown-lab {
+  background: var(--surface-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.lab-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.lab-eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.lab-header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem 0;
+}
+
+.lab-desc {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.lab-tabs {
+  display: inline-flex;
+  gap: 0.25rem;
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 0.25rem;
+}
+
+.lab-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.lab-tab-btn.active {
+  background: var(--surface-primary);
+  color: var(--accent-primary);
+  font-weight: 600;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+.lab-status-banner {
+  padding: 0.65rem 1rem;
+  border-radius: 6px;
+  background: rgba(48, 209, 88, 0.1);
+  border: 1px solid rgba(48, 209, 88, 0.25);
+  color: #30d158;
+  font-size: 0.8125rem;
+  margin-bottom: 1.25rem;
+}
+
+/* Lab Split Editor Grid */
+.lab-editor-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  min-height: 580px;
+}
+
+.lab-panel {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.lab-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.65rem 1rem;
+  background: var(--surface-tertiary);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.lab-panel-title {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.lab-panel-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.lab-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.55rem;
+  border-radius: 5px;
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.lab-btn-icon:hover {
+  color: var(--text-primary);
+  background: var(--surface-primary);
+}
+
+.lab-btn-save {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 5px;
+  background: var(--accent-primary);
+  border: none;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.lab-btn-save:hover {
+  opacity: 0.9;
+}
+
+.lab-btn-save:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.lab-textarea {
+  flex: 1;
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  resize: none;
+  tab-size: 2;
+}
+
+.lab-preview-scroll {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.lab-preview-meta {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.lab-preview-tags {
+  display: flex;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.lab-preview-prose {
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+.lab-preview-prose pre {
+  background: var(--surface-tertiary);
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  overflow-x: auto;
+}
+
+/* Lab Templates Grid */
+.lab-templates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.lab-template-card {
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.lab-template-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.lab-template-header h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.lab-template-badge {
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  background: var(--accent-subtle);
+  color: var(--accent-primary);
+  font-weight: 600;
+}
+
+.lab-template-desc {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.85rem;
+  line-height: 1.5;
+}
+
+.lab-template-preview {
+  background: var(--surface-tertiary);
+  border-radius: 6px;
+  padding: 0.75rem;
+  font-size: 0.6875rem;
+  font-family: var(--font-mono, monospace);
+  color: var(--text-tertiary);
+  max-height: 120px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+/* Lab Files Table */
+.lab-files-table {
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.lab-table-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.lab-table-search {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--surface-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 0.35rem 0.65rem;
+  width: 280px;
+  color: var(--text-tertiary);
+}
+
+.lab-table-search input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 0.8125rem;
+  width: 100%;
+}
+
+.lab-table-filter select {
+  background: var(--surface-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  color: var(--text-primary);
+  padding: 0.35rem 0.65rem;
+  font-size: 0.8125rem;
+}
+
+.lab-files-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+}
+
+.lab-files-table th {
+  text-align: left;
+  padding: 0.65rem 1rem;
+  background: var(--surface-tertiary);
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.lab-files-table td {
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+}
+
+.lab-files-table tr:hover td {
+  background: var(--surface-primary);
+  color: var(--text-primary);
+}
+
+.lab-file-row-actions {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.lab-action-btn {
+  background: var(--surface-tertiary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  color: var(--text-secondary);
+  padding: 0.25rem 0.45rem;
+  font-size: 0.6875rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lab-action-btn:hover {
+  background: var(--accent-subtle);
+  color: var(--accent-primary);
+}
+
+/* --------------------------------------------------------------------------
+   7. Responsive Adaptations
+   -------------------------------------------------------------------------- */
+@media (max-width: 960px) {
+  .neuro-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .neuro-folder-nav {
+    position: static;
+  }
+
+  .neuro-folder-list {
+    max-height: 180px;
+  }
+
+  .lab-editor-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .neuro-cross-domains {
+    grid-template-columns: 1fr;
+  }
+
+  .neuro-graph-side-panel {
+    width: 100%;
+  }
+}

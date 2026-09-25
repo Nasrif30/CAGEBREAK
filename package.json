@@ -1,0 +1,43 @@
+{
+  "name": "cagebreak",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "preview": "vite preview --host 127.0.0.1",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "build": "tsc --noEmit && vite build",
+    "typecheck:experience": "tsc --noEmit -p tsconfig.experience.json",
+    "lint:experience": "eslint src/experience",
+    "build:experience": "tsc --noEmit -p tsconfig.experience.json && vite build --mode experience"
+  },
+  "dependencies": {
+    "@react-three/fiber": "^9.0.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.47.0",
+    "react": "~19.2.0",
+    "react-dom": "~19.2.0",
+    "react-markdown": "^10.1.0",
+    "react-router-dom": "^7.18.4",
+    "remark-gfm": "^4.0.1",
+    "three": "^0.180.0",
+    "yaml": "^2.9.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/three": "^0.180.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "eslint": "^9.0.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "globals": "^16.0.0",
+    "typescript": "^5.9.0",
+    "typescript-eslint": "^8.0.0",
+    "vite": "^7.0.0",
+    "vitest": "^3.2.0"
+  }
+}
